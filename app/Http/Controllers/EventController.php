@@ -25,10 +25,27 @@ class EventController extends Controller
         $event->private = $request->private;
         $event->description = $request->description;
         
+        //Image Upload
+        if ($request->hasFile('image') && $request->file('image')->isValid() ) {
+            $requestImage = $request->image;
+            $extension = $requestImage->extension();
+            // generate a name with method Hash
+            $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
+            $requestImage->move(public_path('img/events'), $imageName);  
+            $event->image = $imageName;
+        }
+                      
         $event->save();
 
-        return redirect("/");
+        return redirect("/")->with('msg', 'Event created successfully!');
+    }
 
+
+    public function show($id) {
+
+        $event = Event::findOrFail($id);
+
+        return view('events.show', ['event' => $event]);
     }
 
 
@@ -48,7 +65,7 @@ class EventController extends Controller
         $nomeRota2 = "Jose";
         $array = [34,35,36,37,38];
         $nomes = ["Pedro", "Gustavo", "Joao", "Antonio"];
-    
+     
         return view('testes', 
             [
                 'nomeView' => $nomeRota,
