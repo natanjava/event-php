@@ -15,12 +15,18 @@ use App\Http\Controllers\EventController;
 |
 */
 
-Route::get('/testes', [EventController::class, 'testes']);
-Route::get('/events/create', [EventController::class, 'create']);
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/events/create', [EventController::class, 'create']);
+Route::get('/', [EventController::class, 'index']);
+Route::post('/events', [EventController::class, 'store']);
+
+
+
+
+
+
+
+Route::get('/testes', [EventController::class, 'testes']);
 
 Route::get('/contato', function () {
     return view('contato');

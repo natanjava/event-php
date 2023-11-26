@@ -19,11 +19,12 @@
     </head>
 
     <body class="antialiased">
+        
         <header>
             <nav class="navbar navbar-expand-lg navbar-light"> 
                 <div class="collapse navbar-collapse" id="navbar">
                    <a href="/" class="navbar-brand">
-                     <img scr="" alt="Events">
+                      <img src="/img/banner_integracao.jpg" alt="Events" >   
                    </a>  
 
                    <ul class="navbar-nav">
