@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>@yeld('title')</title>
+        <title>@yield('title')</title>
 
         <!-- Fonte do google -->
         <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
@@ -14,8 +14,7 @@
 
        <!-- css da aplicação-->
         <link href="/css/style.css" rel="stylesheet">
-        <script src="/js/script.js"></script>
-        
+        <script src="/js/script.js"></script>    
     </head>
 
     <body class="antialiased">
