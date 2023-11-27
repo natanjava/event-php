@@ -220,6 +220,18 @@ header {
     width: 25%;
 }
 
+.dashboard-events-container form {
+    display: inline-block;
+  }
+
+/* Edit page */
+
+.img-preview {
+    /*width: 100px; */
+    margin-top: 5px;
+    margin-bottom: 30px;
+}
+
 
 
 /*footer*/
