@@ -17,6 +17,10 @@
                 <input type="text" class="form-control" id="title" name="title" placeholder="Name of the event">
             </div>
             <div id="form-group">
+                <label for="date">Date of event:</label>
+                <input type="date" class="form-control-file" id="date" name="date" >
+            </div>
+            <div id="form-group">
                 <label for="city">City:</label>
                 <input type="text" class="form-control" id="city" name="city" placeholder="Place of the event">
             </div>
