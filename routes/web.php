@@ -15,11 +15,11 @@ use App\Http\Controllers\EventController;
 |
 */
 
-
-Route::get('/events/create', [EventController::class, 'create']);
 Route::get('/', [EventController::class, 'index']);
+Route::get('/events/create', [EventController::class, 'create'])->middleware('auth');
 Route::post('/events', [EventController::class, 'store']);
 Route::get('/events/{id}', [EventController::class, 'show']);
+Route::get('/dashboard', [EventController::class, 'dashboard'])->middleware('auth');
 
 
 
@@ -42,6 +42,7 @@ Route::get('/produtos', function () {
 Route::get('/produtos-detalhes/{id}', function ($id = null) {
     return view('product', ['id' => $id]);
 });
+
 
 
 
