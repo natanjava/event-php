@@ -49,6 +49,15 @@ header {
    padding: 10px; 
 }
 
+#info-container .already-joined-msg {
+    margin: 15px 0;
+    color: #004085;
+    background-color: #CCE5FF;
+    border: 1px solid #B8DAFF;
+    padding: 10px;
+    width: 275px;
+}
+
 /*nav bar*/
 #navbar img {
     width: 50px;
@@ -120,7 +129,7 @@ header {
 
 .card .card-date {
     font-size: 12px;
-    color: #ccc;
+    color: #212121;
 }
 
 .card-title {
