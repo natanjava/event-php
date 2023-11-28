@@ -9,6 +9,7 @@
       <div id="image-container" class="col-md-6">
         <img src="/img/events/{{ $event->image }}" class="img-fluid" alt="{{ $event->title }}">
       </div>
+      
       <div id="info-container" class="col-md-6">
         <h1>{{ $event->title }}</h1>
         <p class="event-city"><ion-icon name="location-outline"></ion-icon> {{ $event->city }}</p>
@@ -37,9 +38,39 @@
           @endforeach
         </ul>
       </div>
+      
       <div class="col-md-12" id="description-container">
         <h3>About the event:</h3>
         <p class="event-description">{{ $event->description }}</p>
+      </div>
+
+      <div class="col-md-12" id="description-container">
+        
+        @if (count($participants) > 0)
+          <h3>Participants</h3>
+          
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th> 
+                <th scope="col">Email</th>
+              <tr>  
+            </thead>
+            <tbody>
+              @foreach ($participants as $participant)
+                <tr>
+                  <td scropt="row">{{ $loop->index + 1 }}</td>
+                  <td>{{ $participant->name }}</td>
+                  <td>{{ $participant->email }}</td>
+
+                </tr>
+              @endforeach
+            </tbody>
+          </table>
+          
+
+        @endif    
       </div>
     </div>
   </div>

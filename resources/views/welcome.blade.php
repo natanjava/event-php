@@ -4,8 +4,7 @@
 @section('title', 'Events Managment')
 
 @section('content')
-
-
+             
         <div id="search-container" class="col-md-12">
                 <h1>Search an Event</h1>
                 <form action="/" method="GET">
@@ -22,10 +21,15 @@
                         <p class="subtitle">See the events of the next few days</p>
                 @endif
                 
-                <div id="cars-container" class="row">
+                <div id="card-container" class="row">
                         @foreach($events as $event)
                                 <div class="card col-md-3">
+                                        @if($event->image)
                                         <img src="/img/events/{{ $event->image }}" alt="{{ $event->title}}" >
+                                        @else
+                                        <img src="/img/without-Image.jpg" class="without-Image" alt="Default Image">
+                                        @endif
+                                        
                                         <div class="card-body">
                                                 <p class="card-date"> {{ date('d/m/Y'), strtotime($event->date) }}</p>
                                                 <h5 class="card-title">{{ $event->title }}</h5>

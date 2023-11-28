@@ -48,13 +48,30 @@ class EventController extends Controller
             $requestImage->move(public_path('img/events'), $imageName);  
             $event->image = $imageName;
         }
+        else {
+            
+            $event->image = 'without-Image.jpg';
+                        
+        }
+
+        //Field validations
+        if (
+            trim($event->title) == "" ||
+            $event->date == null ||
+            trim($event->city) == "" ||
+            trim($event->description) == "" ||
+            $event->items == null                
+            )
+            {
+            return redirect("/events/create")->with('msg', 'All fields are required!');
+        }
 
         $user = auth()->user();
         $event->user_id = $user->id;
                       
         $event->save();
 
-        return redirect("/")->with('msg', 'Event created successfully!');
+        return redirect("/event")->with('msg', 'Event created successfully!');
     }
 
 
@@ -66,20 +83,25 @@ class EventController extends Controller
         $hasUserJoined = false;
 
         if($user) {
-
             $userEvents = $user->eventAsParticipant->toArray();
-
             foreach($userEvents as $userEvent) {
                 if($userEvent['id'] == $id) {
                     $hasUserJoined = true;
                 }
             }
-
         }
+
+        
+        $participants = $event->users;
 
         $eventOwner = User::where('id', $event->user_id)->first()->toArray();
 
-        return view('events.show', ['event' => $event, 'eventOwner' => $eventOwner, 'hasUserJoined' => $hasUserJoined]);
+        return view('events.show', [
+            'event' => $event, 
+            'eventOwner' => $eventOwner, 
+            'hasUserJoined' => $hasUserJoined,
+            'participants' => $participants
+        ]);
         
     }
 

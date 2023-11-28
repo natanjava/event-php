@@ -58,6 +58,11 @@ header {
     width: 275px;
 }
 
+.without-Image {
+    max-width: 10px; !important
+    height: auto; !important
+}
+
 /*nav bar*/
 #navbar img {
     width: 50px;
